@@ -3,7 +3,7 @@ package co.simplon.itp3.filestorage.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class CustomerCreateDto {
+public class CustomerData {
 
     @NotBlank
     @Size(max = 100)
@@ -23,7 +23,7 @@ public class CustomerCreateDto {
     @NotBlank
     private Boolean consent;
 
-    public CustomerCreateDto() {
+    public CustomerData() {
 	// TODO Auto-generated constructor stub
     }
 
