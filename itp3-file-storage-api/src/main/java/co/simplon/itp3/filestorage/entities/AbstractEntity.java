@@ -10,20 +10,20 @@ abstract class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customer_number;
+    private Long id;
 
     AbstractEntity() {
 	// Package (default) visible
 	// Required no-arg constructor
     }
 
-    public Long getCustomer_number() {
-	return customer_number;
+    public Long getId() {
+	return id;
     }
 
     @SuppressWarnings("unused")
-    public void setCustomer_number(Long customer_number) {
+    public void setId(Long id) {
 	// Prevents from accidental assignment (set by DB)
-	this.customer_number = customer_number;
+	this.id = id;
     }
 }
