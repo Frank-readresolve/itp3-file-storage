@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS customers;
+DROP SEQUENCE IF EXISTS customers_customer_number_seq;
 
 CREATE TABLE customers (
 	id SERIAL PRIMARY KEY,
@@ -10,6 +11,4 @@ CREATE TABLE customers (
 	consent BOOLEAN
 );
 
-CREATE SEQUENCE customer_number_seq
-start 10000
-increment 1;
+select setval('customers_customer_number_seq', 10000, false);

@@ -6,9 +6,6 @@ import javax.validation.constraints.Size;
 public class CustomerData {
 
     @NotBlank
-    private Long customer_number;
-
-    @NotBlank
     @Size(max = 100)
     private String customer_name;
 
@@ -23,12 +20,20 @@ public class CustomerData {
     @NotBlank
     private String email;
 
-    @NotBlank
+//    @NotBlank
     private Boolean consent;
 
     public CustomerData() {
 	// TODO Auto-generated constructor stub
     }
+
+//    public Long getCustomer_number() {
+//	return customer_number;
+//    }
+//
+//    public void setCustomer_number(Long customer_number) {
+//	this.customer_number = customer_number;
+//    }
 
     public String getCustomer_name() {
 	return customer_name;
@@ -72,10 +77,9 @@ public class CustomerData {
 
     @Override
     public String toString() {
-	return "{customer_name=" + customer_name
-		+ ", first_name=" + first_name
-		+ ", last_name=" + last_name + ", email="
-		+ email + ", consent=" + consent + "}";
+	return "{customer_name=" + customer_name + ", first_name=" + first_name
+		+ ", last_name=" + last_name + ", email=" + email + ", consent="
+		+ consent + "}";
     }
 
 }
