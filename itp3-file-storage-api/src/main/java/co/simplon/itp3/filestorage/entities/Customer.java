@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "customers")
 public class Customer extends AbstractEntity {
 
-    @Column(name = "customer_number")
+    @Column(name = "customer_number", insertable = false, updatable = false)
     private Long customer_number;
 
     @Column(name = "customer_name")
