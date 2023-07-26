@@ -6,12 +6,17 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+<<<<<<< HEAD
+=======
+import javax.validation.Constraint;
+>>>>>>> 5f72684f5fb2f160a3401762ae72cefba270664d
 import javax.validation.Payload;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-//@Constraint(validatedBy = UniqueNameValidator.class)
+@Constraint(validatedBy = UniqueNameValidator.class)
+
 public @interface UniqueName {
     String message() default "It should be a unique name";
 
