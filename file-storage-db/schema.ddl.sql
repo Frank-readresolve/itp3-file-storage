@@ -9,3 +9,7 @@ CREATE TABLE customers (
 	email VARCHAR NOT NULL,
 	consent BOOLEAN
 );
+
+CREATE SEQUENCE customer_number_seq
+start 10000
+increment 1;
