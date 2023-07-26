@@ -6,9 +6,6 @@ import javax.validation.constraints.Size;
 public class CustomerData {
 
     @NotBlank
-    private Long customer_number;
-
-    @NotBlank
     @Size(max = 100)
     private String customer_name;
 
@@ -23,7 +20,6 @@ public class CustomerData {
     @NotBlank
     private String email;
 
-    @NotBlank
     private Boolean consent;
 
     public CustomerData() {
