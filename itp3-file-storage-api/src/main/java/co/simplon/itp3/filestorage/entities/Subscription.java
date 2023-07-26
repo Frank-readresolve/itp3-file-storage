@@ -8,8 +8,8 @@ import javax.persistence.Table;
 @Table(name = "subscriptions")
 public class Subscription {
 
-    @Column(name = "subscription_number", insertable = false, updatable = false)
-    private Long subscription_number;
+    @Column(name = "subscription_code", insertable = false, updatable = false)
+    private Long subscription_code;
 
     @Column(name = "name")
     private String name;
@@ -31,12 +31,12 @@ public class Subscription {
     }
 
     public Long getSubscription_number() {
-	return subscription_number;
+	return subscription_code;
     }
 
     public void setSubscription_number(
 	    Long subscription_number) {
-	this.subscription_number = subscription_number;
+	this.subscription_code = subscription_number;
     }
 
     public String getName() {
@@ -84,7 +84,7 @@ public class Subscription {
 
     @Override
     public String toString() {
-	return "{subscription_number=" + subscription_number
+	return "{subscription_code=" + subscription_code
 		+ ", name=" + name + ", description="
 		+ description + ", free_subscription="
 		+ free_subscription + ", duration_in_month="
