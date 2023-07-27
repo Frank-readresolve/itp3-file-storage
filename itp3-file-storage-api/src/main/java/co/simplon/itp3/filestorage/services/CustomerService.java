@@ -6,4 +6,8 @@ public interface CustomerService {
 
     void create(CustomerData inputs);
 
+    Boolean existsByCustomerName(String name);
+
+    Boolean existsByEmail(String email);
+
 }
