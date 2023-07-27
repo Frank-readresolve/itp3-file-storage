@@ -5,26 +5,25 @@ import javax.validation.ConstraintValidatorContext;
 
 import co.simplon.itp3.filestorage.services.CustomerService;
 
-public class UniqueNameValidator
-	implements ConstraintValidator<UniqueName, String> {
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
     private CustomerService service;
 
-    public UniqueNameValidator(CustomerService service) {
+    public UniqueEmailValidator(CustomerService service) {
 	this.service = service;
     }
 
     @Override
-    public boolean isValid(String value,
-	    ConstraintValidatorContext context) {
+    public boolean isValid(String value, ConstraintValidatorContext context) {
 
 	if (value == null) {
 	    return true;
 	}
 
-	if (service.existsByCustomerName(value)) {
+	if (service.existsByEmail(value)) {
 	    return false;
 	}
 	return true;
     }
+
 }

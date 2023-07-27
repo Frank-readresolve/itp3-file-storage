@@ -12,10 +12,10 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-@Constraint(validatedBy = UniqueNameValidator.class)
-public @interface UniqueName {
+@Constraint(validatedBy = UniqueEmailValidator.class)
+public @interface UniqueEmail {
 
-    String message() default "Customer's name already exists";
+    String message() default "Customer's email already exists";
 
     Class<?>[] groups() default {};
 
