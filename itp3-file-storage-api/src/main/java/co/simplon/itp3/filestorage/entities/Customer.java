@@ -9,57 +9,47 @@ import javax.persistence.Table;
 public class Customer extends AbstractEntity {
 
     @Column(name = "customer_number", insertable = false, updatable = false)
-    private Long customer_number;
+    private Long customerNumber;
 
     @Column(name = "customer_name")
-    private String customer_name;
+    private String customerName;
 
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "consent")
-    private Boolean consent;
-
-    public Customer() {
-	// TODO Auto-generated constructor stub
+    public Long getCustomerNumber() {
+	return customerNumber;
     }
 
-    public Long getCustomer_number() {
-	return customer_number;
+    public void setCustomerNumber(Long customerNumber) {
+	this.customerNumber = customerNumber;
     }
 
-    public void setCustomer_number(Long customer_number) {
-	this.customer_number = customer_number;
+    public String getCustomerName() {
+	return customerName;
     }
 
-    public String getCustomer_name() {
-	return customer_name;
+    public void setCustomerName(String customerName) {
+	this.customerName = customerName;
     }
 
-    public void setCustomer_name(String customer_name) {
-	this.customer_name = customer_name;
+    public String getFirstName() {
+	return firstName;
     }
 
-    public String getFirst_name() {
-	return first_name;
+    public void setFirstName(String firstName) {
+	this.firstName = firstName;
     }
 
-    public void setFirst_name(String first_name) {
-	this.first_name = first_name;
+    public String getLastName() {
+	return lastName;
     }
 
-    public String getLast_name() {
-	return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-	this.last_name = last_name;
+    public void setLastName(String lastName) {
+	this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -78,11 +68,23 @@ public class Customer extends AbstractEntity {
 	this.consent = consent;
     }
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "consent")
+    private Boolean consent;
+
+    public Customer() {
+	// TODO Auto-generated constructor stub
+    }
+
     @Override
     public String toString() {
-	return "{customer_name=" + customer_name + ", first_name=" + first_name
-		+ ", last_name=" + last_name + ", email=" + email + ", consent="
-		+ consent + "}";
+	return "{customerNumber=" + customerNumber
+		+ ", customerName=" + customerName
+		+ ", firstName=" + firstName + ", lastName="
+		+ lastName + ", email=" + email
+		+ ", consent=" + consent + "}";
     }
 
 }
