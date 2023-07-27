@@ -24,7 +24,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public void create(SubscriptionData inputs) {
 	Subscription subscription = new Subscription();
 	subscriptionCode++;
-	subscription.setSubscriptionCode("CD" + subscriptionCode++);
+	subscription.setSubscriptionCode("CD" + subscriptionCode);
 	subscription.setSubscriptionName(inputs.getSubscriptionName());
 	subscription.setDescription(inputs.getDescription());
 	subscription.setFreeSubscription(inputs.getFreeSubscription());
