@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Subscription extends AbstractEntity {
 
     @Column(name = "subscription_code")
-    private Long subscriptionCode;
+    private String subscriptionCode;
 
     @Column(name = "subscription_name")
     private String subscriptionName;
@@ -30,11 +30,11 @@ public class Subscription extends AbstractEntity {
 
     }
 
-    public Long getSubscriptionCode() {
+    public String getSubscriptionCode() {
 	return subscriptionCode;
     }
 
-    public void setSubscriptionCode(Long subscriptionCode) {
+    public void setSubscriptionCode(String subscriptionCode) {
 	this.subscriptionCode = subscriptionCode;
     }
 
