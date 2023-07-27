@@ -21,12 +21,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public void create(CustomerData inputs) {
 	Customer customer = new Customer();
-	customer.setCustomer_name(inputs.getCustomer_name());
-	customer.setFirst_name(inputs.getFirst_name());
-	customer.setLast_name(inputs.getLast_name());
+	customer.setCustomerName(inputs.getCustomerName());
+	customer.setFirstName(inputs.getFirstName());
+	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());
 	customer.setConsent(inputs.getConsent());
-	this.customers.save(customer);
+	customers.save(customer);
     }
 
 }
