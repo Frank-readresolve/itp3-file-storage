@@ -9,13 +9,11 @@ import co.simplon.itp3.filestorage.repositories.CustomerRepository;
 
 @Service
 @Transactional(readOnly = true)
-public class CustomerServiceImpl
-	implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository customers;
 
-    public CustomerServiceImpl(
-	    CustomerRepository customers) {
+    public CustomerServiceImpl(CustomerRepository customers) {
 	this.customers = customers;
     }
 
@@ -28,7 +26,7 @@ public class CustomerServiceImpl
 	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());
 	customer.setConsent(inputs.getConsent());
-	this.customers.save(customer);
+	customers.save(customer);
     }
 
 }

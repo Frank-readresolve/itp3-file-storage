@@ -11,8 +11,8 @@ public class Subscription extends AbstractEntity {
     @Column(name = "subscription_code")
     private Long subscriptionCode;
 
-    @Column(name = "subsciption_name")
-    private String subsciptionName;
+    @Column(name = "subscription_name")
+    private String subscriptionName;
 
     @Column(name = "description")
     private String description;
@@ -21,7 +21,7 @@ public class Subscription extends AbstractEntity {
     private Boolean freeSubscription;
 
     @Column(name = "duration_in_months")
-    private int durationInMonth;
+    private int durationInMonths;
 
     @Column(name = "maximum_stored_files")
     private int maximumStoredFiles;
@@ -38,12 +38,12 @@ public class Subscription extends AbstractEntity {
 	this.subscriptionCode = subscriptionCode;
     }
 
-    public String getSubsciptionName() {
-	return subsciptionName;
+    public String getSubscriptionName() {
+	return subscriptionName;
     }
 
-    public void setSubsciptionName(String subsciptionName) {
-	this.subsciptionName = subsciptionName;
+    public void setSubscriptionName(String subscriptionName) {
+	this.subscriptionName = subscriptionName;
     }
 
     public String getDescription() {
@@ -58,37 +58,33 @@ public class Subscription extends AbstractEntity {
 	return freeSubscription;
     }
 
-    public void setFreeSubscription(
-	    Boolean freeSubscription) {
+    public void setFreeSubscription(Boolean freeSubscription) {
 	this.freeSubscription = freeSubscription;
     }
 
-    public int getDurationInMonth() {
-	return durationInMonth;
+    public int getDurationInMonths() {
+	return durationInMonths;
     }
 
-    public void setDurationInMonth(int durationInMonth) {
-	this.durationInMonth = durationInMonth;
+    public void setDurationInMonths(int durationInMonths) {
+	this.durationInMonths = durationInMonths;
     }
 
     public int getMaximumStoredFiles() {
 	return maximumStoredFiles;
     }
 
-    public void setMaximumStoredFiles(
-	    int maximumStoredFiles) {
+    public void setMaximumStoredFiles(int maximumStoredFiles) {
 	this.maximumStoredFiles = maximumStoredFiles;
     }
 
     @Override
     public String toString() {
-	return "{subscriptionCode=" + subscriptionCode
-		+ ", subsciptionName=" + subsciptionName
-		+ ", description=" + description
+	return "{subscriptionCode=" + subscriptionCode + ", subsciptionName="
+		+ subscriptionName + ", description=" + description
 		+ ", freeSubscription=" + freeSubscription
-		+ ", durationInMonth=" + durationInMonth
-		+ ", maximumStoredFiles="
-		+ maximumStoredFiles + "}";
+		+ ", durationInMonths=" + durationInMonths
+		+ ", maximumStoredFiles=" + maximumStoredFiles + "}";
     }
 
 }

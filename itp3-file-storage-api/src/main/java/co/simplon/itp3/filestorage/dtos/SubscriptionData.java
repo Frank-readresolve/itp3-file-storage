@@ -1,6 +1,9 @@
 package co.simplon.itp3.filestorage.dtos;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class SubscriptionData {
@@ -15,12 +18,14 @@ public class SubscriptionData {
 
     private Boolean freeSubscription;
 
-    @NotBlank
-    @Size(max = 12)
-    private int durationInMonth;
+    @NotNull
+    @Min(value = 1)
+    @Max(value = 12)
+    private int durationInMonths;
 
-    @NotBlank
-    @Size(min = 11, max = 10000)
+    @NotNull
+    @Min(value = 11)
+    @Max(value = 10000)
     private int maximumStoredFiles;
 
     public SubscriptionData() {
@@ -31,8 +36,7 @@ public class SubscriptionData {
 	return subscriptionName;
     }
 
-    public void setSubscriptionName(
-	    String subscriptionName) {
+    public void setSubscriptionName(String subscriptionName) {
 	this.subscriptionName = subscriptionName;
     }
 
@@ -48,36 +52,32 @@ public class SubscriptionData {
 	return freeSubscription;
     }
 
-    public void setFreeSubscription(
-	    Boolean freeSubscription) {
+    public void setFreeSubscription(Boolean freeSubscription) {
 	this.freeSubscription = freeSubscription;
     }
 
-    public int getDurationInMonth() {
-	return durationInMonth;
+    public int getDurationInMonths() {
+	return durationInMonths;
     }
 
-    public void setDurationInMonth(int durationInMonth) {
-	this.durationInMonth = durationInMonth;
+    public void setDurationInMonths(int durationInMonths) {
+	this.durationInMonths = durationInMonths;
     }
 
     public int getMaximumStoredFiles() {
 	return maximumStoredFiles;
     }
 
-    public void setMaximumStoredFiles(
-	    int maximumStoredFiles) {
+    public void setMaximumStoredFiles(int maximumStoredFiles) {
 	this.maximumStoredFiles = maximumStoredFiles;
     }
 
     @Override
     public String toString() {
-	return "{subscriptionName=" + subscriptionName
-		+ ", description=" + description
-		+ ", freeSubscription=" + freeSubscription
-		+ ", durationInMonth=" + durationInMonth
-		+ ", maximumStoredFiles="
-		+ maximumStoredFiles + "}";
+	return "{subscriptionName=" + subscriptionName + ", description="
+		+ description + ", freeSubscription=" + freeSubscription
+		+ ", durationInMonths=" + durationInMonths
+		+ ", maximumStoredFiles=" + maximumStoredFiles + "}";
     }
 
 }
