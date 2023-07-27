@@ -6,45 +6,44 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "subscriptions")
-public class Subscription {
+public class Subscription extends AbstractEntity {
 
-    @Column(name = "subscription_code", insertable = false, updatable = false)
-    private Long subscription_code;
+    @Column(name = "subscription_code")
+    private Long subscriptionCode;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "subsciption_name")
+    private String subsciptionName;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "free_subscription")
-    private Boolean free_subscription;
+    private Boolean freeSubscription;
 
     @Column(name = "duration_in_months")
-    private int duration_in_month;
+    private int durationInMonth;
 
     @Column(name = "maximum_stored_files")
-    private int maximum_stored_files;
+    private int maximumStoredFiles;
 
     public Subscription() {
 
     }
 
-    public Long getSubscription_number() {
-	return subscription_code;
+    public Long getSubscriptionCode() {
+	return subscriptionCode;
     }
 
-    public void setSubscription_number(
-	    Long subscription_number) {
-	this.subscription_code = subscription_number;
+    public void setSubscriptionCode(Long subscriptionCode) {
+	this.subscriptionCode = subscriptionCode;
     }
 
-    public String getName() {
-	return name;
+    public String getSubsciptionName() {
+	return subsciptionName;
     }
 
-    public void setName(String name) {
-	this.name = name;
+    public void setSubsciptionName(String subsciptionName) {
+	this.subsciptionName = subsciptionName;
     }
 
     public String getDescription() {
@@ -55,42 +54,41 @@ public class Subscription {
 	this.description = description;
     }
 
-    public Boolean getFree_subscription() {
-	return free_subscription;
+    public Boolean getFreeSubscription() {
+	return freeSubscription;
     }
 
-    public void setFree_subscription(
-	    Boolean free_subscription) {
-	this.free_subscription = free_subscription;
+    public void setFreeSubscription(
+	    Boolean freeSubscription) {
+	this.freeSubscription = freeSubscription;
     }
 
-    public int getDuration_in_month() {
-	return duration_in_month;
+    public int getDurationInMonth() {
+	return durationInMonth;
     }
 
-    public void setDuration_in_month(
-	    int duration_in_month) {
-	this.duration_in_month = duration_in_month;
+    public void setDurationInMonth(int durationInMonth) {
+	this.durationInMonth = durationInMonth;
     }
 
-    public int getMaximum_stored_files() {
-	return maximum_stored_files;
+    public int getMaximumStoredFiles() {
+	return maximumStoredFiles;
     }
 
-    public void setMaximum_stored_files(
-	    int maximum_stored_files) {
-	this.maximum_stored_files = maximum_stored_files;
+    public void setMaximumStoredFiles(
+	    int maximumStoredFiles) {
+	this.maximumStoredFiles = maximumStoredFiles;
     }
 
     @Override
     public String toString() {
-	return "{subscription_code=" + subscription_code
-		+ ", name=" + name + ", description="
-		+ description + ", free_subscription="
-		+ free_subscription + ", duration_in_month="
-		+ duration_in_month
-		+ ", maximum_stored_files="
-		+ maximum_stored_files + "}";
+	return "{subscriptionCode=" + subscriptionCode
+		+ ", subsciptionName=" + subsciptionName
+		+ ", description=" + description
+		+ ", freeSubscription=" + freeSubscription
+		+ ", durationInMonth=" + durationInMonth
+		+ ", maximumStoredFiles="
+		+ maximumStoredFiles + "}";
     }
 
 }

@@ -7,32 +7,33 @@ public class SubscriptionData {
 
     @NotBlank
     @Size(max = 100)
-    private String name;
+    private String subscriptionName;
 
     @NotBlank
     @Size(max = 1000)
     private String description;
 
-    private Boolean free_subscription;
+    private Boolean freeSubscription;
 
     @NotBlank
     @Size(max = 12)
-    private int duration_in_month;
+    private int durationInMonth;
 
     @NotBlank
     @Size(min = 11, max = 10000)
-    private int maximum_stored_files;
+    private int maximumStoredFiles;
 
     public SubscriptionData() {
 
     }
 
-    public String getName() {
-	return name;
+    public String getSubscriptionName() {
+	return subscriptionName;
     }
 
-    public void setName(String name) {
-	this.name = name;
+    public void setSubscriptionName(
+	    String subscriptionName) {
+	this.subscriptionName = subscriptionName;
     }
 
     public String getDescription() {
@@ -43,41 +44,40 @@ public class SubscriptionData {
 	this.description = description;
     }
 
-    public Boolean getFree_subscription() {
-	return free_subscription;
+    public Boolean getFreeSubscription() {
+	return freeSubscription;
     }
 
-    public void setFree_subscription(
-	    Boolean free_subscription) {
-	this.free_subscription = free_subscription;
+    public void setFreeSubscription(
+	    Boolean freeSubscription) {
+	this.freeSubscription = freeSubscription;
     }
 
-    public int getDuration_in_month() {
-	return duration_in_month;
+    public int getDurationInMonth() {
+	return durationInMonth;
     }
 
-    public void setDuration_in_month(
-	    int duration_in_month) {
-	this.duration_in_month = duration_in_month;
+    public void setDurationInMonth(int durationInMonth) {
+	this.durationInMonth = durationInMonth;
     }
 
-    public int getMaximum_stored_files() {
-	return maximum_stored_files;
+    public int getMaximumStoredFiles() {
+	return maximumStoredFiles;
     }
 
-    public void setMaximum_stored_files(
-	    int maximum_stored_files) {
-	this.maximum_stored_files = maximum_stored_files;
+    public void setMaximumStoredFiles(
+	    int maximumStoredFiles) {
+	this.maximumStoredFiles = maximumStoredFiles;
     }
 
     @Override
     public String toString() {
-	return "{name=" + name + ", description="
-		+ description + ", free_subscription="
-		+ free_subscription + ", duration_in_month="
-		+ duration_in_month
-		+ ", maximum_stored_files="
-		+ maximum_stored_files + "}";
+	return "{subscriptionName=" + subscriptionName
+		+ ", description=" + description
+		+ ", freeSubscription=" + freeSubscription
+		+ ", durationInMonth=" + durationInMonth
+		+ ", maximumStoredFiles="
+		+ maximumStoredFiles + "}";
     }
 
 }
