@@ -3,8 +3,12 @@ package co.simplon.itp3.filestorage.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import co.simplon.itp3.filestorage.customValidation.UniqueEmail;
+import co.simplon.itp3.filestorage.customValidation.UniqueName;
+
 public class CustomerData {
 
+    @UniqueName
     @NotBlank
     @Size(max = 100)
     private String customerName;
@@ -17,6 +21,7 @@ public class CustomerData {
     @Size(max = 100)
     private String lastName;
 
+    @UniqueEmail
     @NotBlank
     private String email;
 
@@ -68,10 +73,8 @@ public class CustomerData {
 
     @Override
     public String toString() {
-	return "{customerName=" + customerName
-		+ ", firstName=" + firstName + ", lastName="
-		+ lastName + ", email=" + email
-		+ ", consent=" + consent + "}";
+	return "{customerName=" + customerName + ", firstName=" + firstName + ", lastName="
+		+ lastName + ", email=" + email + ", consent=" + consent + "}";
     }
 
 }

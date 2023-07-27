@@ -9,13 +9,11 @@ import co.simplon.itp3.filestorage.repositories.CustomerRepository;
 
 @Service
 @Transactional(readOnly = true)
-public class CustomerServiceImpl
-	implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository customers;
 
-    public CustomerServiceImpl(
-	    CustomerRepository customers) {
+    public CustomerServiceImpl(CustomerRepository customers) {
 	this.customers = customers;
     }
 
@@ -31,4 +29,13 @@ public class CustomerServiceImpl
 	this.customers.save(customer);
     }
 
+    @Override
+    public Boolean existsByCustomerName(String name) {
+	return customers.existsByCustomerName(name);
+    }
+
+    @Override
+    public Boolean existsByEmail(String email) {
+	return customers.existsByEmail(email);
+    }
 }
