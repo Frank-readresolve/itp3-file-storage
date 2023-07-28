@@ -38,6 +38,7 @@ public class SubscriptionServiceImpl
 		inputs.getDurationInMonths());
 	subscription.setMaximumStoredFiles(
 		inputs.getMaximumStoredFiles());
+
 	subscriptions.save(subscription);
     }
 
