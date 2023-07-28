@@ -1,6 +1,7 @@
 package co.simplon.itp3.filestorage.dtos;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import co.simplon.itp3.filestorage.customValidation.UniqueEmail;
@@ -11,14 +12,17 @@ public class CustomerData {
     @UniqueName
     @NotBlank
     @Size(max = 100)
+    @Pattern(regexp = "^[a-zA-Z0-9]+$")
     private String customerName;
 
     @NotBlank
     @Size(max = 100)
+    @Pattern(regexp = "^[a-zA-Z-]+$")
     private String firstName;
 
     @NotBlank
     @Size(max = 100)
+    @Pattern(regexp = "^[a-zA-Z-]+$")
     private String lastName;
 
     @UniqueEmail
@@ -73,9 +77,10 @@ public class CustomerData {
 
     @Override
     public String toString() {
-	return "{customerName=" + customerName + ", firstName=" + firstName
-		+ ", lastName=" + lastName + ", email=" + email + ", consent="
-		+ consent + "}";
+	return "{customerName=" + customerName
+		+ ", firstName=" + firstName + ", lastName="
+		+ lastName + ", email=" + email
+		+ ", consent=" + consent + "}";
     }
 
 }
