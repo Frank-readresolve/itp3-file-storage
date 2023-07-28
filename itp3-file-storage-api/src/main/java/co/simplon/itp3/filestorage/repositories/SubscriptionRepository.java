@@ -7,4 +7,6 @@ import co.simplon.itp3.filestorage.entities.Subscription;
 public interface SubscriptionRepository
 	extends JpaRepository<Subscription, Long> {
 
+    Boolean existsBySubscriptionName(String name);
+
 }

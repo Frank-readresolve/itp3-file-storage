@@ -12,17 +12,17 @@ public class CustomerData {
     @UniqueName
     @NotBlank
     @Size(max = 100)
-    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9éàè]+$")
     private String customerName;
 
     @NotBlank
     @Size(max = 100)
-    @Pattern(regexp = "^[a-zA-Z-]+$")
+    @Pattern(regexp = "^[a-zA-Z-éàè]+$")
     private String firstName;
 
     @NotBlank
     @Size(max = 100)
-    @Pattern(regexp = "^[a-zA-Z-]+$")
+    @Pattern(regexp = "^[a-zA-Z-éàè]+$")
     private String lastName;
 
     @UniqueEmail

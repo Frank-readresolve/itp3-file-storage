@@ -42,4 +42,9 @@ public class SubscriptionServiceImpl
 	subscriptions.save(subscription);
     }
 
+    @Override
+    public Boolean existsBySubscriptionName(String name) {
+	return subscriptions.existsBySubscriptionName(name);
+    }
+
 }

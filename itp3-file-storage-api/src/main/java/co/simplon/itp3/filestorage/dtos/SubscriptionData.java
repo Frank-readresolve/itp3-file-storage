@@ -7,16 +7,19 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import co.simplon.itp3.filestorage.customValidation.UniqueSubscriptionName;
+
 public class SubscriptionData {
 
+    @UniqueSubscriptionName
     @NotBlank
     @Size(max = 100)
-    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9éàè]+$")
     private String subscriptionName;
 
     @NotBlank
     @Size(max = 1000)
-    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9éàè\\s]+$")
     private String description;
 
     private boolean freeSubscription;
@@ -24,13 +27,11 @@ public class SubscriptionData {
     @NotNull
     @Min(value = 1)
     @Max(value = 12)
-    @Pattern(regexp = "^[0-9]+$")
     private int durationInMonths;
 
     @NotNull
     @Min(value = 11)
     @Max(value = 10000)
-    @Pattern(regexp = "^[0-9]+$")
     private int maximumStoredFiles;
 
     public SubscriptionData() {
