@@ -5,11 +5,11 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import co.simplon.itp3.filestorage.customValidation.UniqueEmail;
-import co.simplon.itp3.filestorage.customValidation.UniqueName;
+import co.simplon.itp3.filestorage.customValidation.UniqueCustomerName;
 
 public class CustomerData {
 
-    @UniqueName
+    @UniqueCustomerName
     @NotBlank
     @Size(max = 100)
     @Pattern(regexp = "^[a-zA-Z0-9éàè]+$")

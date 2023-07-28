@@ -12,8 +12,8 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-@Constraint(validatedBy = UniqueNameValidator.class)
-public @interface UniqueName {
+@Constraint(validatedBy = UniqueCustomerNameValidator.class)
+public @interface UniqueCustomerName {
 
     String message() default "Customer's name already exists";
 

@@ -16,7 +16,6 @@ CREATE TABLE customers (
 			PRIMARY KEY(id)
 );
 
-select setval('customers_customer_number_seq', 10000, false);
 
 CREATE TABLE subscriptions (
 	id SERIAL,
