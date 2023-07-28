@@ -11,5 +11,5 @@ public interface SubscriptionRepository
     Boolean existsBySubscriptionName(String name);
 
     @Query(value = "SELECT nextval('subscription_code_seq')", nativeQuery = true)
-    Long getNextSeriesCustomerNumber();
+    Long getNextSeriesSubscriptionCode();
 }

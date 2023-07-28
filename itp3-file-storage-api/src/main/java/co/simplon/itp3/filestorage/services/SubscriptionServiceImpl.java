@@ -25,7 +25,7 @@ public class SubscriptionServiceImpl
 	Subscription subscription = new Subscription();
 	subscription
 		.setSubscriptionCode("CD" + subscriptions
-			.getNextSeriesCustomerNumber());
+			.getNextSeriesSubscriptionCode());
 	subscription.setSubscriptionName(
 		inputs.getSubscriptionName());
 	subscription
