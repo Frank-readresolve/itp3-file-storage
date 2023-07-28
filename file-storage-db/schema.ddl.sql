@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS subscriptions;
-DROP SEQUENCE IF EXISTS Customers_customer_number_seq;
+DROP SEQUENCE IF EXISTS customers_customer_number_seq;
 
 DROP SEQUENCE IF EXISTS customers_customer_number_seq;
 
@@ -19,7 +19,7 @@ select setval('customers_customer_number_seq', 10000, false);
 
 CREATE TABLE subscriptions (
 	id SERIAL PRIMARY KEY,
-	subscriptions_code SERIAL unique,
+	subscription_code VARCHAR unique,
 	subscription_name VARCHAR(100) NOT NULL,
 	description VARCHAR(1000) NOT NULL,
 	free_subscription BOOLEAN,
