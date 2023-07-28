@@ -5,7 +5,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import co.simplon.itp3.filestorage.services.CustomerService;
 
-public class UniqueCustomerNameValidator implements ConstraintValidator<UniqueCustomerName, String> {
+public class UniqueCustomerNameValidator
+	implements ConstraintValidator<UniqueCustomerName, String> {
 
     private CustomerService service;
 

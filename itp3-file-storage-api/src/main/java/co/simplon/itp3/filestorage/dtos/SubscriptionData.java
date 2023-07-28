@@ -7,8 +7,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import co.simplon.itp3.filestorage.customValidation.UniqueSubscriptionName;
+
 public class SubscriptionData {
 
+    @UniqueSubscriptionName
     @NotBlank
     @Size(max = 100)
     @Pattern(regexp = "^[a-zA-Z0-9éàè]+$")
