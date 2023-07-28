@@ -25,7 +25,7 @@ public class CustomerData {
     @NotBlank
     private String email;
 
-    private Boolean consent;
+    private boolean consent;
 
     public CustomerData() {
 	// TODO Auto-generated constructor stub
@@ -63,18 +63,19 @@ public class CustomerData {
 	this.email = email;
     }
 
-    public Boolean getConsent() {
+    public boolean getConsent() {
 	return consent;
     }
 
-    public void setConsent(Boolean consent) {
+    public void setConsent(boolean consent) {
 	this.consent = consent;
     }
 
     @Override
     public String toString() {
-	return "{customerName=" + customerName + ", firstName=" + firstName + ", lastName="
-		+ lastName + ", email=" + email + ", consent=" + consent + "}";
+	return "{customerName=" + customerName + ", firstName=" + firstName
+		+ ", lastName=" + lastName + ", email=" + email + ", consent="
+		+ consent + "}";
     }
 
 }

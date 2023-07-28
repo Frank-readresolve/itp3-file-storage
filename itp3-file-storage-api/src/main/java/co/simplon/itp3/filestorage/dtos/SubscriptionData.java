@@ -16,7 +16,7 @@ public class SubscriptionData {
     @Size(max = 1000)
     private String description;
 
-    private Boolean freeSubscription;
+    private boolean freeSubscription;
 
     @NotNull
     @Min(value = 1)
@@ -48,11 +48,11 @@ public class SubscriptionData {
 	this.description = description;
     }
 
-    public Boolean getFreeSubscription() {
+    public boolean getFreeSubscription() {
 	return freeSubscription;
     }
 
-    public void setFreeSubscription(Boolean freeSubscription) {
+    public void setFreeSubscription(boolean freeSubscription) {
 	this.freeSubscription = freeSubscription;
     }
 

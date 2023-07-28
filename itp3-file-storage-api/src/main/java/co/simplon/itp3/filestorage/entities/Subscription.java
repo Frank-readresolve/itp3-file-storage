@@ -18,7 +18,7 @@ public class Subscription extends AbstractEntity {
     private String description;
 
     @Column(name = "free_subscription")
-    private Boolean freeSubscription;
+    private boolean freeSubscription;
 
     @Column(name = "duration_in_months")
     private int durationInMonths;
@@ -56,12 +56,13 @@ public class Subscription extends AbstractEntity {
 	this.description = description;
     }
 
-    public Boolean getFreeSubscription() {
+    public boolean getFreeSubscription() {
 	return freeSubscription;
     }
 
     public void setFreeSubscription(
-	    Boolean freeSubscription) {
+	    boolean freeSubscription) {
+
 	this.freeSubscription = freeSubscription;
     }
 

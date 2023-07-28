@@ -20,6 +20,16 @@ public class Customer extends AbstractEntity {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "consent")
+    private boolean consent;
+
+    public Customer() {
+	// TODO Auto-generated constructor stub
+    }
+
     public Long getCustomerNumber() {
 	return customerNumber;
     }
@@ -60,31 +70,19 @@ public class Customer extends AbstractEntity {
 	this.email = email;
     }
 
-    public Boolean getConsent() {
+    public boolean getConsent() {
 	return consent;
     }
 
-    public void setConsent(Boolean consent) {
+    public void setConsent(boolean consent) {
 	this.consent = consent;
-    }
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "consent")
-    private Boolean consent;
-
-    public Customer() {
-	// TODO Auto-generated constructor stub
     }
 
     @Override
     public String toString() {
-	return "{customerNumber=" + customerNumber
-		+ ", customerName=" + customerName
-		+ ", firstName=" + firstName + ", lastName="
-		+ lastName + ", email=" + email
-		+ ", consent=" + consent + "}";
+	return "{customerNumber=" + customerNumber + ", customerName="
+		+ customerName + ", firstName=" + firstName + ", lastName="
+		+ lastName + ", email=" + email + ", consent=" + consent + "}";
     }
 
 }
