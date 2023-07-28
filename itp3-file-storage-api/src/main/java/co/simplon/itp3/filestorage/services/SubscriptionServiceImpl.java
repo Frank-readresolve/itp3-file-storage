@@ -12,8 +12,6 @@ import co.simplon.itp3.filestorage.repositories.SubscriptionRepository;
 public class SubscriptionServiceImpl
 	implements SubscriptionService {
 
-    private static Long subscriptionCode = 0L;
-
     private SubscriptionRepository subscriptions;
 
     public SubscriptionServiceImpl(
@@ -25,9 +23,9 @@ public class SubscriptionServiceImpl
     @Transactional
     public void create(SubscriptionData inputs) {
 	Subscription subscription = new Subscription();
-	subscriptionCode++;
-	subscription.setSubscriptionCode(
-		"CD" + subscriptionCode);
+	subscription
+		.setSubscriptionCode("CD" + subscriptions
+			.getNextSeriesCustomerNumber());
 	subscription.setSubscriptionName(
 		inputs.getSubscriptionName());
 	subscription
