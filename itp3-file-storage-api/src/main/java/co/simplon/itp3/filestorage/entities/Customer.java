@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "customers")
 public class Customer extends AbstractEntity {
 
-    @Column(name = "customer_number", insertable = false, updatable = false)
+    @Column(name = "customer_number")
     private Long customerNumber;
 
     @Column(name = "customer_name")
@@ -80,9 +80,9 @@ public class Customer extends AbstractEntity {
 
     @Override
     public String toString() {
-	return "{customerNumber=" + customerNumber + ", customerName="
-		+ customerName + ", firstName=" + firstName + ", lastName="
-		+ lastName + ", email=" + email + ", consent=" + consent + "}";
+	return "{customerNumber=" + customerNumber + ", customerName=" + customerName
+		+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		+ ", consent=" + consent + "}";
     }
 
 }

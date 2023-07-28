@@ -2,11 +2,11 @@ DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS subscriptions;
 DROP SEQUENCE IF EXISTS customers_customer_number_seq;
 
-DROP SEQUENCE IF EXISTS customers_customer_number_seq;
+CREATE SEQUENCE customer_number_seq INCREMENT BY 1 START WITH 10000;
 
 CREATE TABLE customers (
 	id SERIAL,
-    customer_number SERIAL UNIQUE,
+    customer_number INTEGER NOT NULL UNIQUE,
     customer_name VARCHAR(100) NOT NULL UNIQUE,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
