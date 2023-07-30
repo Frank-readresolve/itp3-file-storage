@@ -4,16 +4,22 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import co.simplon.itp3.filestorage.customValidation.UniqueSubscriptionName;
 
 public class SubscriptionData {
 
+    @UniqueSubscriptionName
     @NotBlank
     @Size(max = 100)
+    @Pattern(regexp = "^[a-zA-Z0-9éàè]+$")
     private String subscriptionName;
 
     @NotBlank
     @Size(max = 1000)
+    @Pattern(regexp = "^[a-zA-Z0-9éàè\\s]+$")
     private String description;
 
     private boolean freeSubscription;
@@ -36,7 +42,8 @@ public class SubscriptionData {
 	return subscriptionName;
     }
 
-    public void setSubscriptionName(String subscriptionName) {
+    public void setSubscriptionName(
+	    String subscriptionName) {
 	this.subscriptionName = subscriptionName;
     }
 
@@ -52,7 +59,8 @@ public class SubscriptionData {
 	return freeSubscription;
     }
 
-    public void setFreeSubscription(boolean freeSubscription) {
+    public void setFreeSubscription(
+	    boolean freeSubscription) {
 	this.freeSubscription = freeSubscription;
     }
 
@@ -68,16 +76,19 @@ public class SubscriptionData {
 	return maximumStoredFiles;
     }
 
-    public void setMaximumStoredFiles(int maximumStoredFiles) {
+    public void setMaximumStoredFiles(
+	    int maximumStoredFiles) {
 	this.maximumStoredFiles = maximumStoredFiles;
     }
 
     @Override
     public String toString() {
-	return "{subscriptionName=" + subscriptionName + ", description="
-		+ description + ", freeSubscription=" + freeSubscription
+	return "{subscriptionName=" + subscriptionName
+		+ ", description=" + description
+		+ ", freeSubscription=" + freeSubscription
 		+ ", durationInMonths=" + durationInMonths
-		+ ", maximumStoredFiles=" + maximumStoredFiles + "}";
+		+ ", maximumStoredFiles="
+		+ maximumStoredFiles + "}";
     }
 
 }
