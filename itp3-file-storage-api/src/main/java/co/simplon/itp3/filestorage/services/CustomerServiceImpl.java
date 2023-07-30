@@ -22,6 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void create(CustomerData inputs) {
 	Customer customer = new Customer();
 	customer.setCustomerName(inputs.getCustomerName());
+	customer.setCustomerNumber(customers.getNextSeriesCustomerNumber());
 	customer.setFirstName(inputs.getFirstName());
 	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());

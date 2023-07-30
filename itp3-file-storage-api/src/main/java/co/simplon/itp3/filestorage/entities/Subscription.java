@@ -34,7 +34,8 @@ public class Subscription extends AbstractEntity {
 	return subscriptionCode;
     }
 
-    public void setSubscriptionCode(String subscriptionCode) {
+    public void setSubscriptionCode(
+	    String subscriptionCode) {
 	this.subscriptionCode = subscriptionCode;
     }
 
@@ -42,7 +43,8 @@ public class Subscription extends AbstractEntity {
 	return subscriptionName;
     }
 
-    public void setSubscriptionName(String subscriptionName) {
+    public void setSubscriptionName(
+	    String subscriptionName) {
 	this.subscriptionName = subscriptionName;
     }
 
@@ -58,7 +60,9 @@ public class Subscription extends AbstractEntity {
 	return freeSubscription;
     }
 
-    public void setFreeSubscription(boolean freeSubscription) {
+    public void setFreeSubscription(
+	    boolean freeSubscription) {
+
 	this.freeSubscription = freeSubscription;
     }
 
@@ -74,17 +78,20 @@ public class Subscription extends AbstractEntity {
 	return maximumStoredFiles;
     }
 
-    public void setMaximumStoredFiles(int maximumStoredFiles) {
+    public void setMaximumStoredFiles(
+	    int maximumStoredFiles) {
 	this.maximumStoredFiles = maximumStoredFiles;
     }
 
     @Override
     public String toString() {
-	return "{subscriptionCode=" + subscriptionCode + ", subsciptionName="
-		+ subscriptionName + ", description=" + description
+	return "{subscriptionCode=" + subscriptionCode
+		+ ", subsciptionName=" + subscriptionName
+		+ ", description=" + description
 		+ ", freeSubscription=" + freeSubscription
 		+ ", durationInMonths=" + durationInMonths
-		+ ", maximumStoredFiles=" + maximumStoredFiles + "}";
+		+ ", maximumStoredFiles="
+		+ maximumStoredFiles + "}";
     }
 
 }
