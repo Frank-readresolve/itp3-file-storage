@@ -2,11 +2,7 @@ target/
 .metadata
 bin/
 
-<<<<<<< HEAD
 ###Eclipse###
-=======
-### Eclipse ###
->>>>>>> main
 .classpath
 .project
 .settings
