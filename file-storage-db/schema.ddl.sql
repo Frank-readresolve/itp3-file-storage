@@ -24,7 +24,7 @@ CREATE TABLE customers (
 CREATE TABLE subscriptions (
 	id SERIAL,
 	subscription_code VARCHAR NOT NULL UNIQUE,
-	subscription_name VARCHAR(100) NOT NULL,
+	subscription_name VARCHAR(100) NOT NULL UNIQUE,
 	description VARCHAR(1000) NOT NULL,
 	free_subscription BOOLEAN,
 	duration_in_months INTEGER NOT NULL,
