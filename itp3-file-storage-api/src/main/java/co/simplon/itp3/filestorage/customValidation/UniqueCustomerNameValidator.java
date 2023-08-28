@@ -5,12 +5,12 @@ import javax.validation.ConstraintValidatorContext;
 
 import co.simplon.itp3.filestorage.services.CustomerService;
 
-public class UniqueNameValidator
-	implements ConstraintValidator<UniqueName, String> {
+public class UniqueCustomerNameValidator
+	implements ConstraintValidator<UniqueCustomerName, String> {
 
     private CustomerService service;
 
-    public UniqueNameValidator(CustomerService service) {
+    public UniqueCustomerNameValidator(CustomerService service) {
 	this.service = service;
     }
 
