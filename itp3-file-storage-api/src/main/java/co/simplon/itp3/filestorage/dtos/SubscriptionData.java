@@ -14,12 +14,12 @@ public class SubscriptionData {
     @UniqueSubscriptionName
     @NotBlank
     @Size(max = 100)
-    @Pattern(regexp = "^[a-zA-Z0-9éàè]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$")
     private String subscriptionName;
 
     @NotBlank
     @Size(max = 1000)
-    @Pattern(regexp = "^[a-zA-Z0-9éàè\\s]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9\\s]+$")
     private String description;
 
     private boolean freeSubscription;
