@@ -2,11 +2,16 @@ target/
 .metadata
 bin/
 
+<<<<<<< HEAD
 ###Eclipse###
+=======
+### Eclipse ###
+>>>>>>> main
 .classpath
 .project
 .settings
 
 application.properties
 
+### Others ###
 .DS_Store

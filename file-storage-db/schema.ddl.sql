@@ -1,8 +1,12 @@
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS subscriptions;
-DROP SEQUENCE IF EXISTS customers_customer_number_seq;
+DROP SEQUENCE IF EXISTS customer_number_seq;
+DROP SEQUENCE IF EXISTS subscription_code_seq;
 
 CREATE SEQUENCE customer_number_seq INCREMENT BY 1 START WITH 10000;
+CREATE SEQUENCE subscription_code_seq INCREMENT BY 1 START WITH 1;
+
+CREATE SEQUENCE subscription_code_seq INCREMENT BY 1;
 
 CREATE TABLE customers (
 	id SERIAL,
@@ -16,16 +20,15 @@ CREATE TABLE customers (
 			PRIMARY KEY(id)
 );
 
-select setval('customers_customer_number_seq', 10000, false);
 
 CREATE TABLE subscriptions (
 	id SERIAL,
-	subscription_code VARCHAR UNIQUE,
+	subscription_code VARCHAR NOT NULL UNIQUE,
 	subscription_name VARCHAR(100) NOT NULL,
 	description VARCHAR(1000) NOT NULL,
 	free_subscription BOOLEAN,
-	duration_in_months int NOT null,
-	maximum_stored_files int NOT NULL,
+	duration_in_months INTEGER NOT NULL,
+	maximum_stored_files INTEGER NOT NULL,
 		CONSTRAINT pk_subscription_id
 			PRIMARY KEY(id)
 );
