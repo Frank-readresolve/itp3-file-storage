@@ -38,7 +38,8 @@ public class CustomerServiceImpl
 	customer.setConsent(inputs.getConsent());
 	Long roleId = inputs.getRoleId();
 	Role role = roles.getReferenceById(roleId);
-	customer.setRole_id(role);
+	customer.setRoleId(role);
+	;
 	customers.save(customer);
     }
 

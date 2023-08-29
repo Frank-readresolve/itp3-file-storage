@@ -30,7 +30,7 @@ public class Customer extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role role_id;
+    private Role roleId;
 
     public Customer() {
 	// TODO Auto-generated constructor stub
@@ -84,12 +84,12 @@ public class Customer extends AbstractEntity {
 	this.consent = consent;
     }
 
-    public Role getRole_id() {
-	return role_id;
+    public Role getRoleId() {
+	return roleId;
     }
 
-    public void setRole_id(Role role_id) {
-	this.role_id = role_id;
+    public void setRoleId(Role roleId) {
+	this.roleId = roleId;
     }
 
     @Override
@@ -98,8 +98,8 @@ public class Customer extends AbstractEntity {
 		+ ", customerName=" + customerName
 		+ ", firstName=" + firstName + ", lastName="
 		+ lastName + ", email=" + email
-		+ ", consent=" + consent + ", role_id="
-		+ role_id + "}";
+		+ ", consent=" + consent + ", roleId="
+		+ roleId + "}";
     }
 
 }
