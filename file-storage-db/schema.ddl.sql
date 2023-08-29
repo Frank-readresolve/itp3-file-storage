@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS subscriptions;
+DROP TABLE IF EXISTS roles;
 DROP SEQUENCE IF EXISTS customer_number_seq;
 DROP SEQUENCE IF EXISTS subscription_code_seq;
 
@@ -7,6 +8,14 @@ CREATE SEQUENCE customer_number_seq INCREMENT BY 1 START WITH 10000;
 CREATE SEQUENCE subscription_code_seq INCREMENT BY 1 START WITH 1;
 
 CREATE SEQUENCE subscription_code_seq INCREMENT BY 1;
+
+CREATE TABLE roles (
+	id SERIAL,
+	contact_role_code VARCHAR(5) NOT NULL UNIQUE,
+	contact_role_name VARCHAR(100) NOT NULL UNIQUE,
+		CONSTRAINT pk_role_id
+			PRIMARY KEY(id)
+);
 
 CREATE TABLE customers (
 	id SERIAL,
