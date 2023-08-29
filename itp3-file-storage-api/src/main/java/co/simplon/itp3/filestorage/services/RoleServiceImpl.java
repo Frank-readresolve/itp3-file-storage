@@ -3,6 +3,8 @@ package co.simplon.itp3.filestorage.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.simplon.itp3.filestorage.dtos.RoleData;
+import co.simplon.itp3.filestorage.entities.Role;
 import co.simplon.itp3.filestorage.repositories.RoleRepository;
 
 @Service
