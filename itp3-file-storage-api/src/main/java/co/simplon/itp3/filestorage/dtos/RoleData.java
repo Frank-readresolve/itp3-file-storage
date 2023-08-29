@@ -3,6 +3,7 @@ package co.simplon.itp3.filestorage.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import co.simplon.itp3.filestorage.customValidation.UniqueContactRoleCode;
 import co.simplon.itp3.filestorage.customValidation.UniqueContactRoleName;
 
 public class RoleData {

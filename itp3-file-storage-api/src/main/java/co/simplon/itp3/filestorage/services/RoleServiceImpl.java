@@ -3,6 +3,8 @@ package co.simplon.itp3.filestorage.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.simplon.itp3.filestorage.dtos.RoleData;
+import co.simplon.itp3.filestorage.entities.Role;
 import co.simplon.itp3.filestorage.repositories.RoleRepository;
 
 @Service
@@ -19,8 +21,21 @@ public class RoleServiceImpl implements RoleService {
     @Transactional
     public void create(RoleData inputs) {
 	Role role = new Role();
-	role.setContactRoleName(inputs.getContactRoleName());
+	role.setContactRoleName(
+		inputs.getContactRoleName());
 	roles.save(role);
+    }
+
+    @Override
+    public boolean existsByContactRoleCode(String value) {
+
+	return roles.existsByContactRoleCode(value);
+    }
+
+    @Override
+    public boolean existsByContactRoleName(String value) {
+
+	return roles.existsByContactRoleName(value);
     }
 
 }
