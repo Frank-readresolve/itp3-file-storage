@@ -2,6 +2,8 @@ package co.simplon.itp3.filestorage.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,10 @@ public class Customer extends AbstractEntity {
 
     @Column(name = "consent")
     private boolean consent;
+
+    @ManyToOne
+    @JoinColumn(name = "contact_role_code_id")
+    private Role contactRoleCode;
 
     public Customer() {
 	// TODO Auto-generated constructor stub
@@ -70,7 +76,7 @@ public class Customer extends AbstractEntity {
 	this.email = email;
     }
 
-    public boolean getConsent() {
+    public boolean isConsent() {
 	return consent;
     }
 
@@ -78,11 +84,23 @@ public class Customer extends AbstractEntity {
 	this.consent = consent;
     }
 
+    public Role getContactRoleCode() {
+	return contactRoleCode;
+    }
+
+    public void setContactRoleCode(Role contactRoleCode) {
+	this.contactRoleCode = contactRoleCode;
+    }
+
     @Override
     public String toString() {
-	return "{customerNumber=" + customerNumber + ", customerName=" + customerName
-		+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-		+ ", consent=" + consent + "}";
+	return "{customerNumber=" + customerNumber
+		+ ", customerName=" + customerName
+		+ ", firstName=" + firstName + ", lastName="
+		+ lastName + ", email=" + email
+		+ ", consent=" + consent
+		+ ", contactRoleCode=" + contactRoleCode
+		+ "}";
     }
 
 }

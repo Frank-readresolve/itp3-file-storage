@@ -5,7 +5,6 @@ DROP SEQUENCE IF EXISTS customer_number_seq;
 DROP SEQUENCE IF EXISTS subscription_code_seq;
 
 CREATE SEQUENCE customer_number_seq INCREMENT BY 1 START WITH 10000;
-CREATE SEQUENCE subscription_code_seq INCREMENT BY 1 START WITH 1;
 
 CREATE SEQUENCE subscription_code_seq INCREMENT BY 1;
 
