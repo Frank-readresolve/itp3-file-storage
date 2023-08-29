@@ -21,6 +21,7 @@ public class RoleServiceImpl implements RoleService {
     @Transactional
     public void create(RoleData inputs) {
 	Role role = new Role();
+	role.setContactRoleCode(inputs.getContactRoleCode());
 	role.setContactRoleName(inputs.getContactRoleName());
 	roles.save(role);
     }

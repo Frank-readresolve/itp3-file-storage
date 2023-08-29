@@ -15,8 +15,8 @@ INSERT INTO subscriptions(subscription_name, description, free_subscription, dur
 		
 INSERT INTO roles(contact_role_code,contact_role_name)
 	VALUES
-		('ABCDE','Manager')
-		('MBGFR','Developper')
+		('ABCDE','Manager'),
+		('MBGFR','Developper');
 		
 		
 		
