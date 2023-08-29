@@ -3,11 +3,16 @@ package co.simplon.itp3.filestorage.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import co.simplon.itp3.filestorage.customValidation.UniqueContactRoleName;
+
 public class RoleData {
 
+    @UniqueContactRoleCode
+    @NotBlank
     @Pattern(regexp = "^[A-Z]{1-5}")
     private String contactRoleCode;
 
+    @UniqueContactRoleName
     @NotBlank
     @Pattern(regexp = "^[a-zA-Z]{1-100}")
     private String contactRoleName;
