@@ -6,7 +6,7 @@ import co.simplon.itp3.filestorage.entities.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-    Boolean existsByContactRoleCode(String name);
+    Boolean existsByContactRoleCode(String code);
 
-    Boolean existsByContactRoleName(String value);
+    Boolean existsByContactRoleName(String name);
 }

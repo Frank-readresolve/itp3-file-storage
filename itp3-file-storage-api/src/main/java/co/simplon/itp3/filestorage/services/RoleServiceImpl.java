@@ -21,21 +21,20 @@ public class RoleServiceImpl implements RoleService {
     @Transactional
     public void create(RoleData inputs) {
 	Role role = new Role();
-	role.setContactRoleName(
-		inputs.getContactRoleName());
+	role.setContactRoleName(inputs.getContactRoleName());
 	roles.save(role);
     }
 
     @Override
-    public boolean existsByContactRoleCode(String value) {
+    public Boolean existsByContactRoleCode(String code) {
 
-	return roles.existsByContactRoleCode(value);
+	return roles.existsByContactRoleCode(code);
     }
 
     @Override
-    public boolean existsByContactRoleName(String value) {
+    public Boolean existsByContactRoleName(String name) {
 
-	return roles.existsByContactRoleName(value);
+	return roles.existsByContactRoleName(name);
     }
 
 }
