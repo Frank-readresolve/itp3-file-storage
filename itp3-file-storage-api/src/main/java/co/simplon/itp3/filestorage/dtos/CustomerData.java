@@ -31,7 +31,7 @@ public class CustomerData {
 
     private boolean consent;
 
-    private Long contactRoleCodeId;
+    private Long roleId;
 
     public CustomerData() {
 	// TODO Auto-generated constructor stub
@@ -77,13 +77,12 @@ public class CustomerData {
 	this.consent = consent;
     }
 
-    public Long getContactRoleCodeId() {
-	return contactRoleCodeId;
+    public Long getRoleId() {
+	return roleId;
     }
 
-    public void setContactRoleCodeId(
-	    Long contactRoleCodeId) {
-	this.contactRoleCodeId = contactRoleCodeId;
+    public void setRoleId(Long roleId) {
+	this.roleId = roleId;
     }
 
     @Override
@@ -91,9 +90,8 @@ public class CustomerData {
 	return "{customerName=" + customerName
 		+ ", firstName=" + firstName + ", lastName="
 		+ lastName + ", email=" + email
-		+ ", consent=" + consent
-		+ ", contactRoleCodeId=" + contactRoleCodeId
-		+ "}";
+		+ ", consent=" + consent + ", roleId="
+		+ roleId + "}";
     }
 
 }

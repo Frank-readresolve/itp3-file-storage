@@ -36,11 +36,9 @@ public class CustomerServiceImpl
 	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());
 	customer.setConsent(inputs.getConsent());
-	Long contactRoleCodeId = inputs
-		.getContactRoleCodeId();
-	Role role = roles
-		.getReferenceById(contactRoleCodeId);
-	customer.setContactRoleCode(role);
+	Long roleId = inputs.getRoleId();
+	Role role = roles.getReferenceById(roleId);
+	customer.setRole_id(role);
 	customers.save(customer);
     }
 

@@ -29,8 +29,8 @@ public class Customer extends AbstractEntity {
     private boolean consent;
 
     @ManyToOne
-    @JoinColumn(name = "contact_role_code_id")
-    private Role contactRoleCode;
+    @JoinColumn(name = "role_id")
+    private Role role_id;
 
     public Customer() {
 	// TODO Auto-generated constructor stub
@@ -84,12 +84,12 @@ public class Customer extends AbstractEntity {
 	this.consent = consent;
     }
 
-    public Role getContactRoleCode() {
-	return contactRoleCode;
+    public Role getRole_id() {
+	return role_id;
     }
 
-    public void setContactRoleCode(Role contactRoleCode) {
-	this.contactRoleCode = contactRoleCode;
+    public void setRole_id(Role role_id) {
+	this.role_id = role_id;
     }
 
     @Override
@@ -98,9 +98,8 @@ public class Customer extends AbstractEntity {
 		+ ", customerName=" + customerName
 		+ ", firstName=" + firstName + ", lastName="
 		+ lastName + ", email=" + email
-		+ ", consent=" + consent
-		+ ", contactRoleCode=" + contactRoleCode
-		+ "}";
+		+ ", consent=" + consent + ", role_id="
+		+ role_id + "}";
     }
 
 }

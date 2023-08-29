@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import co.simplon.itp3.filestorage.entities.Customer;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository
+	extends JpaRepository<Customer, Long> {
 
     Boolean existsByCustomerName(String name);
 
@@ -13,4 +14,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query(value = "SELECT nextval('customer_number_seq')", nativeQuery = true)
     Long getNextSeriesCustomerNumber();
+
 }
