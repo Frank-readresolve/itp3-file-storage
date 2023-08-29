@@ -8,6 +8,9 @@ import javax.persistence.Table;
 @Table(name = "roles")
 public class Role extends AbstractEntity {
 
+    @Column(name = "contact_role_code")
+    private String contactRoleCode;
+
     @Column(name = "contact_role_name")
     private String contactRoleName;
 
@@ -22,9 +25,18 @@ public class Role extends AbstractEntity {
 	this.contactRoleName = contactRoleName;
     }
 
+    public String getContactRoleCode() {
+	return contactRoleCode;
+    }
+
+    public void setContactRoleCode(String contactRoleCode) {
+	this.contactRoleCode = contactRoleCode;
+    }
+
     @Override
     public String toString() {
-	return "{contactRoleName=" + contactRoleName + "}";
+	return "{contactRoleCode=" + contactRoleCode + ", contactRoleName="
+		+ contactRoleName + "}";
     }
 
 }
