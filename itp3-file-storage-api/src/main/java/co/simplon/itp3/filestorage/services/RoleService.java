@@ -7,4 +7,6 @@ public interface RoleService {
     void create(RoleData inputs);
 
     boolean existsByContactRoleCode(String value);
+
+    boolean existsByContactRoleName(String value);
 }

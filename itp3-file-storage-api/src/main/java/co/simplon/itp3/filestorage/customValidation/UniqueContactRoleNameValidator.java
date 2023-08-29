@@ -3,6 +3,8 @@ package co.simplon.itp3.filestorage.customValidation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import co.simplon.itp3.filestorage.services.RoleService;
+
 public class UniqueContactRoleNameValidator implements
 	ConstraintValidator<UniqueContactRoleName, String> {
 
