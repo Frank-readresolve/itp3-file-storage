@@ -24,8 +24,12 @@ CREATE TABLE customers (
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     consent BOOLEAN,
+    role_id INTEGER,
 	    CONSTRAINT pk_customer_id
 			PRIMARY KEY(id)
+		CONSTRAINT fk_roles_id
+			FOREIGN KEY(role_id)
+			REFERENCES roles(id)
 );
 
 
