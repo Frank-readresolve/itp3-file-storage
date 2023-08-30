@@ -4,7 +4,6 @@ DROP SEQUENCE IF EXISTS customer_number_seq;
 DROP SEQUENCE IF EXISTS subscription_code_seq;
 
 CREATE SEQUENCE customer_number_seq INCREMENT BY 1 START WITH 10000;
-CREATE SEQUENCE subscription_code_seq INCREMENT BY 1 START WITH 1;
 
 CREATE SEQUENCE subscription_code_seq INCREMENT BY 1;
 
@@ -15,6 +14,7 @@ CREATE TABLE customers (
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
+    api_key VARCHAR(64) NOT NULL UNIQUE,
     consent BOOLEAN,
 	    CONSTRAINT pk_customer_id
 			PRIMARY KEY(id)

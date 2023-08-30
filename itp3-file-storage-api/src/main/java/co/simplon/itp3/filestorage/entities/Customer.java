@@ -26,6 +26,9 @@ public class Customer extends AbstractEntity {
     @Column(name = "consent")
     private boolean consent;
 
+    @Column(name = "api_key")
+    private String apiKey;
+
     public Customer() {
 	// TODO Auto-generated constructor stub
     }
@@ -78,11 +81,19 @@ public class Customer extends AbstractEntity {
 	this.consent = consent;
     }
 
+    public String getApiKey() {
+	return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+	this.apiKey = apiKey;
+    }
+
     @Override
     public String toString() {
 	return "{customerNumber=" + customerNumber + ", customerName=" + customerName
 		+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-		+ ", consent=" + consent + "}";
+		+ ", consent=" + consent + ", apiKey=" + apiKey + "}";
     }
 
 }

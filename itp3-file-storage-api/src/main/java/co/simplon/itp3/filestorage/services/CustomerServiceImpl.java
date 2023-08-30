@@ -1,5 +1,9 @@
 package co.simplon.itp3.filestorage.services;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,10 +15,14 @@ import co.simplon.itp3.filestorage.repositories.CustomerRepository;
 @Transactional(readOnly = true)
 public class CustomerServiceImpl implements CustomerService {
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     private CustomerRepository customers;
 
-    public CustomerServiceImpl(CustomerRepository customers) {
+    public CustomerServiceImpl(CustomerRepository customers,
+	    BCryptPasswordEncoder bCryptPasswordEncoder) {
 	this.customers = customers;
+	this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -27,6 +35,9 @@ public class CustomerServiceImpl implements CustomerService {
 	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());
 	customer.setConsent(inputs.getConsent());
+	String apiKey = UUID.randomUUID().toString();
+	String hashedApiKey = bCryptPasswordEncoder.encode(apiKey);
+	customer.setApiKey(hashedApiKey);
 	customers.save(customer);
     }
 
