@@ -32,6 +32,9 @@ public class Customer extends AbstractEntity {
     @JoinColumn(name = "role_id")
     private Role roleId;
 
+    @Column(name = "api_key")
+    private String apiKey;
+
     public Customer() {
 	// TODO Auto-generated constructor stub
     }
@@ -92,14 +95,20 @@ public class Customer extends AbstractEntity {
 	this.roleId = roleId;
     }
 
+    public String getApiKey() {
+	return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+	this.apiKey = apiKey;
+    }
+
     @Override
     public String toString() {
-	return "{customerNumber=" + customerNumber
-		+ ", customerName=" + customerName
-		+ ", firstName=" + firstName + ", lastName="
-		+ lastName + ", email=" + email
-		+ ", consent=" + consent + ", roleId="
-		+ roleId + "}";
+
+	return "{customerNumber=" + customerNumber + ", customerName=" + customerName
+		+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		+ ", consent=" + consent + ", roleId=" + roleId + " , apiKey=" + apiKey + "}";
     }
 
 }
