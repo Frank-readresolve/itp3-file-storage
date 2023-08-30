@@ -7,7 +7,7 @@ bin/
 .project
 .settings
 
-application.properties
+application-dev.properties
 
 ### Others ###
 .DS_Store
