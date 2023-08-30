@@ -10,7 +10,7 @@ import co.simplon.itp3.filestorage.customValidation.FileType;
 public class AnonymousFileData {
 
     @NotNull
-    @FileSize
+    @FileSize(maxSizeInKB = 100)
     @FileType
     private MultipartFile file;
 
