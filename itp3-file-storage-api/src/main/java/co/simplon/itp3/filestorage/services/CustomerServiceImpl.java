@@ -4,12 +4,13 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import co.simplon.itp3.filestorage.dtos.CustomerData;
+import co.simplon.itp3.filestorage.dtos.SendEmailDto;
 import co.simplon.itp3.filestorage.entities.Customer;
 import co.simplon.itp3.filestorage.entities.Role;
 import co.simplon.itp3.filestorage.repositories.CustomerRepository;
@@ -17,18 +18,26 @@ import co.simplon.itp3.filestorage.repositories.RoleRepository;
 
 @Service
 @Transactional(readOnly = true)
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl
+	implements CustomerService {
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private CustomerRepository customers;
-    private RoleRepository roles;
+    private final RestTemplate restTemplate;
 
-    public CustomerServiceImpl(CustomerRepository customers, RoleRepository roles,
-	    BCryptPasswordEncoder bCryptPasswordEncoder) {
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final CustomerRepository customers;
+
+    private final RoleRepository roles;
+
+    public CustomerServiceImpl(CustomerRepository customers,
+	    RoleRepository roles,
+	    BCryptPasswordEncoder bCryptPasswordEncoder,
+	    RestTemplate restTemplate) {
 	this.customers = customers;
 	this.roles = roles;
 	this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	this.restTemplate = restTemplate;
+
     }
 
     @Override
@@ -36,7 +45,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void create(@Valid CustomerData inputs) {
 	Customer customer = new Customer();
 	customer.setCustomerName(inputs.getCustomerName());
-	customer.setCustomerNumber(customers.getNextSeriesCustomerNumber());
+	customer.setCustomerNumber(
+		customers.getNextSeriesCustomerNumber());
 	customer.setFirstName(inputs.getFirstName());
 	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());
@@ -45,10 +55,31 @@ public class CustomerServiceImpl implements CustomerService {
 	Role role = roles.getReferenceById(roleId);
 	customer.setRoleId(role);
 	String apiKey = UUID.randomUUID().toString();
-	String hashedApiKey = bCryptPasswordEncoder.encode(apiKey);
+	String hashedApiKey = bCryptPasswordEncoder
+		.encode(apiKey);
 	customer.setApiKey(hashedApiKey);
+
+	String externalApiResponse = callExternalAPI(
+		customer.getEmail(), hashedApiKey);
 	customers.save(customer);
-    };
+    }
+
+    private String callExternalAPI(String recipientEmail,
+	    String hashedApiKey) {
+	String apiUrl = "http://localhost:8083/send-mail";
+
+	SendEmailDto emailDto = new SendEmailDto();
+	emailDto.setPrimaryRecipient(recipientEmail);
+	emailDto.setSender("no-reply.dev@readresolve.io");
+	emailDto.setSubject("apiKey");
+	emailDto.setBody(hashedApiKey);
+
+	String response = restTemplate.postForObject(apiUrl,
+		emailDto, String.class);
+
+	System.out.println(response + "hi");
+	return response;
+    }
 
     @Override
     public Boolean existsByCustomerName(String name) {

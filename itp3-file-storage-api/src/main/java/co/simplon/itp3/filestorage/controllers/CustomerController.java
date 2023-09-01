@@ -16,7 +16,7 @@ import co.simplon.itp3.filestorage.services.CustomerService;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private CustomerService service;
+    private final CustomerService service;
 
     public CustomerController(CustomerService service) {
 	this.service = service;
@@ -24,7 +24,8 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void create(@RequestBody @Valid CustomerData inputs) {
+    public void create(
+	    @RequestBody @Valid CustomerData inputs) {
 	service.create(inputs);
     }
 }

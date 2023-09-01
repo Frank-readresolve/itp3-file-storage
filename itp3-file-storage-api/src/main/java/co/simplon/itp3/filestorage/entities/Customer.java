@@ -106,9 +106,12 @@ public class Customer extends AbstractEntity {
     @Override
     public String toString() {
 
-	return "{customerNumber=" + customerNumber + ", customerName=" + customerName
-		+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-		+ ", consent=" + consent + ", roleId=" + roleId + " , apiKey=" + apiKey + "}";
+	return "{customerNumber=" + customerNumber
+		+ ", customerName=" + customerName
+		+ ", firstName=" + firstName + ", lastName="
+		+ lastName + ", email=" + email
+		+ ", consent=" + consent + ", roleId="
+		+ roleId + " , apiKey=" + apiKey + "}";
     }
 
 }
