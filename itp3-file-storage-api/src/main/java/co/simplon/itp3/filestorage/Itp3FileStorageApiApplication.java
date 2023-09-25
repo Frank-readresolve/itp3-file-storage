@@ -10,7 +10,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class Itp3FileStorageApiApplication {
 
     public static void main(String[] args) {
-	SpringApplication.run(Itp3FileStorageApiApplication.class, args);
+	SpringApplication.run(
+		Itp3FileStorageApiApplication.class, args);
     }
 
 }
