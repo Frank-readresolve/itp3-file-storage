@@ -5,8 +5,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class FileSizeValidator implements
-	ConstraintValidator<FileSize, MultipartFile> {
+public class FileSizeValidator
+	implements ConstraintValidator<FileSize, MultipartFile> {
 
     private static final long KB = 1000;
 
