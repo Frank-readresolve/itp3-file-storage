@@ -8,7 +8,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 public class Itp3FileStorageApiApplication {
 
     public static void main(String[] args) {
-	SpringApplication.run(Itp3FileStorageApiApplication.class, args);
+	SpringApplication.run(
+		Itp3FileStorageApiApplication.class, args);
     }
 
 }
