@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,9 @@ import co.simplon.itp3.filestorage.repositories.RoleRepository;
 @Transactional(readOnly = true)
 public class CustomerServiceImpl
 	implements CustomerService {
+
+    @Value("${itp3-file-storage-api.send-mail-endpoint}")
+    private String apiUrl;
 
     private final RestTemplate restTemplate;
 
@@ -59,14 +63,14 @@ public class CustomerServiceImpl
 		.encode(apiKey);
 	customer.setApiKey(hashedApiKey);
 
-	String externalApiResponse = callExternalAPI(
-		customer.getEmail(), hashedApiKey);
+//	String externalApiResponse = callExternalAPI(
+//		customer.getEmail(), hashedApiKey);
+	callExternalAPI(customer.getEmail(), hashedApiKey);
 	customers.save(customer);
     }
 
-    private String callExternalAPI(String recipientEmail,
+    private void callExternalAPI(String recipientEmail,
 	    String hashedApiKey) {
-	String apiUrl = "http://localhost:8083/send-mail";
 
 	SendEmailDto emailDto = new SendEmailDto();
 	emailDto.setPrimaryRecipient(recipientEmail);
@@ -74,11 +78,9 @@ public class CustomerServiceImpl
 	emailDto.setSubject("apiKey");
 	emailDto.setBody(hashedApiKey);
 
-	String response = restTemplate.postForObject(apiUrl,
-		emailDto, String.class);
+	restTemplate.postForObject(apiUrl, emailDto,
+		String.class);
 
-	System.out.println(response + "hi");
-	return response;
     }
 
     @Override
