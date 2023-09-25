@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,8 +17,7 @@ import co.simplon.itp3.filestorage.dtos.AnonymousFileData;
 import co.simplon.itp3.filestorage.dtos.FileView;
 
 @Service
-public class AnonymousFileServiceImpl
-	implements AnonymousFileService {
+public class AnonymousFileServiceImpl implements AnonymousFileService {
 
     @Value("${itp3-file-storage-api.uploads.location}")
     private String uploadDir;
@@ -26,6 +26,7 @@ public class AnonymousFileServiceImpl
     }
 
     @Override
+    @Async
     public FileView upload(AnonymousFileData inputs) {
 	FileView view = new FileView();
 	MultipartFile file = inputs.getFile();
@@ -37,13 +38,11 @@ public class AnonymousFileServiceImpl
 	return view;
     };
 
-    private void store(MultipartFile file,
-	    String fileName) {
+    private void store(MultipartFile file, String fileName) {
 	Path uploadPath = Paths.get(uploadDir);
 	Path target = uploadPath.resolve(fileName);
 	try (InputStream in = file.getInputStream()) {
-	    Files.copy(in, target,
-		    StandardCopyOption.REPLACE_EXISTING);
+	    Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
 	} catch (IOException ex) {
 	    throw new RuntimeException(ex);
 	}

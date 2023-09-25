@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Documented
 public @interface FileSize {
 
-    String message() default "Max upload size exceeded. It should be less or equal to 100KB";
+    String message() default "Max upload size exceeded. It should be less or equal to 500KB";
 
     Class<?>[] groups() default {};
 
