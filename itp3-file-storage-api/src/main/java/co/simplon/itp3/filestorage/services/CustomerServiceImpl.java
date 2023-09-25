@@ -63,8 +63,6 @@ public class CustomerServiceImpl
 		.encode(apiKey);
 	customer.setApiKey(hashedApiKey);
 
-//	String externalApiResponse = callExternalAPI(
-//		customer.getEmail(), hashedApiKey);
 	callExternalAPI(customer.getEmail(), hashedApiKey);
 	customers.save(customer);
     }
