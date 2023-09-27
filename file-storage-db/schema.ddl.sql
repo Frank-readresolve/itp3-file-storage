@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS subscriptions;
 DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS anony;
-Drop TABLE IF EXISTS En-têtes HTTP;
+DROP TABLE IF EXISTS anonymous_files;
+DROP TABLE IF EXISTS http_headers;
 DROP SEQUENCE IF EXISTS customer_number_seq;
 DROP SEQUENCE IF EXISTS subscription_code_seq;
 
@@ -29,10 +29,10 @@ CREATE TABLE customers (
     consent BOOLEAN,
     role_id INTEGER,
 	    CONSTRAINT pk_customer_id
-			PRIMARY KEY(id)
-		CONSTRAINT fk_roles_id
-			FOREIGN KEY(role_id)
-			REFERENCES roles(id)
+			PRIMARY KEY(id),
+			CONSTRAINT fk_roles_id
+            FOREIGN KEY(role_id)
+            REFERENCES roles(id)
 );
 
 
@@ -48,6 +48,8 @@ CREATE TABLE subscriptions (
 			PRIMARY KEY(id)
 );
 
+
+
 CREATE TABLE anonymous_files (
     id SERIAL PRIMARY KEY,
     file_name VARCHAR NOT NULL UNIQUE,
@@ -58,7 +60,10 @@ CREATE TABLE anonymous_files (
 );
 
 CREATE TABLE http_headers (
-    header_codeL SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     header_name VARCHAR,
     header_value VARCHAR
 );
+
+
+
