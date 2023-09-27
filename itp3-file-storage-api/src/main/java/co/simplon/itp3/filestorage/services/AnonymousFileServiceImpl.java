@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
@@ -23,24 +24,22 @@ import co.simplon.itp3.filestorage.repositories.AnonymousFileRepository;
 import co.simplon.itp3.filestorage.repositories.HttpHeaderRepository;
 
 @Service
-public class AnonymousFileServiceImpl
-	implements AnonymousFileService {
+public class AnonymousFileServiceImpl implements AnonymousFileService {
 
     @Value("${itp3-file-storage-api.uploads.location}")
     private String uploadDir;
-    private AnonymousFileRepository anonymous_files;
-    private HttpHeaderRepository http_headers;
+    private AnonymousFileRepository anonymousFiles;
+    private HttpHeaderRepository httpHeaders;
 
-    public AnonymousFileServiceImpl(
-	    AnonymousFileRepository anonymous_files,
-	    HttpHeaderRepository http_headers) {
-	this.anonymous_files = anonymous_files;
-	this.http_headers = http_headers;
+    public AnonymousFileServiceImpl(AnonymousFileRepository anonymousFiles,
+	    HttpHeaderRepository httpHeaders) {
+	this.anonymousFiles = anonymousFiles;
+	this.httpHeaders = httpHeaders;
     }
 
     @Override
     @Async
-    public FileView upload(
+    public CompletableFuture<FileView> upload(
 	    @RequestHeader Map<String, String> headers,
 	    AnonymousFileData inputs) {
 	FileView view = new FileView();
@@ -70,10 +69,9 @@ public class AnonymousFileServiceImpl
 	anonymousFile.setFileSize(fileSize);
 	anonymousFile.setSuccess(success);
 	anonymousFile.setErrorMessage(errorMessage);
-	anonymous_files.save(anonymousFile);
+	anonymousFiles.save(anonymousFile);
 
-	for (Map.Entry<String, String> entry : headers
-		.entrySet()) {
+	for (Map.Entry<String, String> entry : headers.entrySet()) {
 	    String key = entry.getKey();
 	    String value = entry.getValue();
 
@@ -81,21 +79,19 @@ public class AnonymousFileServiceImpl
 	    header.setHeaderName(key);
 	    header.setHeaderValue(value);
 
-	    http_headers.save(header);
+	    httpHeaders.save(header);
 	}
 
-	return view;
+	return CompletableFuture.completedFuture(view);
 
     }
 
-    private void store(MultipartFile file, String fileName)
-	    throws IOException {
+    private void store(MultipartFile file, String fileName) throws IOException {
 	Path uploadPath = Paths.get(uploadDir);
 	Path target = uploadPath.resolve(fileName);
 
 	try (InputStream in = file.getInputStream()) {
-	    Files.copy(in, target,
-		    StandardCopyOption.REPLACE_EXISTING);
+	    Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
 	}
     }
 
