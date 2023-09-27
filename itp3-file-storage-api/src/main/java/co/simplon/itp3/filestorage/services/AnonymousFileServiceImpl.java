@@ -17,6 +17,7 @@ import co.simplon.itp3.filestorage.dtos.AnonymousFileData;
 import co.simplon.itp3.filestorage.dtos.FileView;
 import co.simplon.itp3.filestorage.entities.AnonymousFile;
 import co.simplon.itp3.filestorage.repositories.AnonymousFileRepository;
+import co.simplon.itp3.filestorage.repositories.HttpHeaderRepository;
 
 @Service
 public class AnonymousFileServiceImpl
@@ -27,7 +28,8 @@ public class AnonymousFileServiceImpl
     private AnonymousFileRepository anonymous_files;
 
     public AnonymousFileServiceImpl(
-	    AnonymousFileRepository anonymous_files) {
+	    AnonymousFileRepository anonymous_files,
+	    HttpHeaderRepository http_headers) {
 	this.anonymous_files = anonymous_files;
     }
 
@@ -41,29 +43,40 @@ public class AnonymousFileServiceImpl
 	String fileName = baseName + fileSuffix;
 	long fileSize = file.getSize();
 	String fileType = file.getContentType();
+	boolean success = false;
+	String errorMessage = "";
 
-	store(file, fileName);
-	view.setName(fileName);
+	try {
+	    store(file, fileName);
+	    success = true;
 
-	AnonymousFile anonymousFile = new AnonymousFile();
-	anonymousFile.setFileName(fileName);
-	anonymousFile.setFileType(fileType);
-	anonymousFile.setFileSize(fileSize);
-	anonymous_files.save(anonymousFile);
+	} catch (IOException ex) {
 
-	return view;
-    };
+	    errorMessage = ex.getMessage();
+	} finally {
 
-    private void store(MultipartFile file,
-	    String fileName) {
+	    view.setName(fileName);
+
+	    AnonymousFile anonymousFile = new AnonymousFile();
+	    anonymousFile.setFileName(fileName);
+	    anonymousFile.setFileType(fileType);
+	    anonymousFile.setFileSize(fileSize);
+	    anonymousFile.setSuccess(success);
+	    anonymousFile.setErrorMessage(errorMessage);
+	    anonymous_files.save(anonymousFile);
+	}
+	    return view;
+	
+    }
+
+    private void store(MultipartFile file, String fileName)
+	    throws IOException {
 	Path uploadPath = Paths.get(uploadDir);
 	Path target = uploadPath.resolve(fileName);
+
 	try (InputStream in = file.getInputStream()) {
 	    Files.copy(in, target,
 		    StandardCopyOption.REPLACE_EXISTING);
-	} catch (IOException ex) {
-	    throw new RuntimeException(ex);
 	}
-    };
-
+    }
 }

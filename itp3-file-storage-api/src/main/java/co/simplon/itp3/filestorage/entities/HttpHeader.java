@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "http_headers")
-class httpHeaders extends AbstractEntity {
+public class HttpHeader extends AbstractEntity {
 
     @Column(name = "header_name")
     private String headerName;
@@ -14,7 +14,7 @@ class httpHeaders extends AbstractEntity {
     @Column(name = "header_value")
     private String headerValue;
 
-    public httpHeaders() {
+    public HttpHeader() {
     }
 
     public String getHeaderName() {
