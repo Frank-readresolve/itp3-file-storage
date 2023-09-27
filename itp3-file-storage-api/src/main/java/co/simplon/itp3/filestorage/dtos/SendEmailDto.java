@@ -1,5 +1,7 @@
 package co.simplon.itp3.filestorage.dtos;
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -8,7 +10,7 @@ public class SendEmailDto {
 
     @NotBlank
     @Email
-    private String primaryRecipient;
+    private List<String> primaryRecipient;
 
     @NotBlank
     @Email
@@ -25,12 +27,12 @@ public class SendEmailDto {
 
     }
 
-    public String getPrimaryRecipient() {
+    public List<String> getPrimaryRecipient() {
 	return primaryRecipient;
     }
 
     public void setPrimaryRecipient(
-	    String primaryRecipient) {
+	    List<String> primaryRecipient) {
 	this.primaryRecipient = primaryRecipient;
     }
 

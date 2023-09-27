@@ -9,5 +9,4 @@ public interface CustomerService {
     Boolean existsByCustomerName(String name);
 
     Boolean existsByEmail(String email);
-
 }

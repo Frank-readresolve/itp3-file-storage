@@ -1,10 +1,10 @@
 package co.simplon.itp3.filestorage.services;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +21,6 @@ import co.simplon.itp3.filestorage.repositories.RoleRepository;
 @Transactional(readOnly = true)
 public class CustomerServiceImpl
 	implements CustomerService {
-
-    @Value("${itp3-file-storage-api.send-mail-endpoint}")
-    private String apiUrl;
 
     private final RestTemplate restTemplate;
 
@@ -49,8 +46,11 @@ public class CustomerServiceImpl
     public void create(@Valid CustomerData inputs) {
 	Customer customer = new Customer();
 	customer.setCustomerName(inputs.getCustomerName());
-	customer.setCustomerNumber(
-		customers.getNextSeriesCustomerNumber());
+	Long customerNumber = customers
+		.getNextSeriesCustomerNumber();
+	String customerNumberString = String
+		.valueOf(customerNumber);
+	customer.setCustomerNumber(customerNumber);
 	customer.setFirstName(inputs.getFirstName());
 	customer.setLastName(inputs.getLastName());
 	customer.setEmail(inputs.getEmail());
@@ -62,22 +62,26 @@ public class CustomerServiceImpl
 	String hashedApiKey = bCryptPasswordEncoder
 		.encode(apiKey);
 	customer.setApiKey(hashedApiKey);
-
-	callExternalAPI(customer.getEmail(), hashedApiKey);
+	callExternalAPI(customer.getEmail(), apiKey,
+		customerNumberString);
 	customers.save(customer);
     }
 
     private void callExternalAPI(String recipientEmail,
-	    String hashedApiKey) {
+	    String apiKey, String customerNumber) {
 
 	SendEmailDto emailDto = new SendEmailDto();
-	emailDto.setPrimaryRecipient(recipientEmail);
+	ArrayList<String> recipientList = new ArrayList<>();
+	recipientList.add(recipientEmail);
+	emailDto.setPrimaryRecipient(recipientList);
 	emailDto.setSender("no-reply.dev@readresolve.io");
-	emailDto.setSubject("apiKey");
-	emailDto.setBody(hashedApiKey);
+	emailDto.setSubject("Identifiers");
+	String body = "Customer Number : " + customerNumber
+		+ " API key : " + apiKey;
+	emailDto.setBody(body);
 
-	restTemplate.postForObject(apiUrl, emailDto,
-		String.class);
+	restTemplate.postForObject("/send-attached-mail",
+		emailDto, String.class);
 
     }
 
