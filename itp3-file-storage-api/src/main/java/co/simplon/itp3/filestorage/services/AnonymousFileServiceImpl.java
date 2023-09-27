@@ -28,14 +28,14 @@ public class AnonymousFileServiceImpl
 
     @Value("${itp3-file-storage-api.uploads.location}")
     private String uploadDir;
-    private AnonymousFileRepository anonymous_files;
-    private HttpHeaderRepository http_headers;
+    private AnonymousFileRepository anonymousFiles;
+    private HttpHeaderRepository httpHeaders;
 
     public AnonymousFileServiceImpl(
-	    AnonymousFileRepository anonymous_files,
-	    HttpHeaderRepository http_headers) {
-	this.anonymous_files = anonymous_files;
-	this.http_headers = http_headers;
+	    AnonymousFileRepository anonymousFiles,
+	    HttpHeaderRepository httpHeaders) {
+	this.anonymousFiles = anonymousFiles;
+	this.httpHeaders = httpHeaders;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class AnonymousFileServiceImpl
 	anonymousFile.setFileSize(fileSize);
 	anonymousFile.setSuccess(success);
 	anonymousFile.setErrorMessage(errorMessage);
-	anonymous_files.save(anonymousFile);
+	anonymousFiles.save(anonymousFile);
 
 	for (Map.Entry<String, String> entry : headers
 		.entrySet()) {
@@ -81,7 +81,7 @@ public class AnonymousFileServiceImpl
 	    header.setHeaderName(key);
 	    header.setHeaderValue(value);
 
-	    http_headers.save(header);
+	    httpHeaders.save(header);
 	}
 
 	return view;
