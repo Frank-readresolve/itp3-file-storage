@@ -9,13 +9,11 @@ import co.simplon.itp3.filestorage.repositories.SubscriptionRepository;
 
 @Service
 @Transactional(readOnly = true)
-public class SubscriptionServiceImpl
-	implements SubscriptionService {
+public class SubscriptionServiceImpl implements SubscriptionService {
 
     private SubscriptionRepository subscriptions;
 
-    public SubscriptionServiceImpl(
-	    SubscriptionRepository subscriptions) {
+    public SubscriptionServiceImpl(SubscriptionRepository subscriptions) {
 	this.subscriptions = subscriptions;
     }
 
@@ -23,19 +21,12 @@ public class SubscriptionServiceImpl
     @Transactional
     public void create(SubscriptionData inputs) {
 	Subscription subscription = new Subscription();
-	subscription
-		.setSubscriptionCode("CD" + subscriptions
-			.getNextSeriesSubscriptionCode());
-	subscription.setSubscriptionName(
-		inputs.getSubscriptionName());
-	subscription
-		.setDescription(inputs.getDescription());
-	subscription.setFreeSubscription(
-		inputs.getFreeSubscription());
-	subscription.setDurationInMonths(
-		inputs.getDurationInMonths());
-	subscription.setMaximumStoredFiles(
-		inputs.getMaximumStoredFiles());
+	subscription.setSubscriptionCode("CD" + subscriptions.getNextSeriesSubscriptionCode());
+	subscription.setSubscriptionName(inputs.getSubscriptionName());
+	subscription.setDescription(inputs.getDescription());
+	subscription.setFreeSubscription(inputs.getFreeSubscription());
+	subscription.setDurationInMonths(inputs.getDurationInMonths());
+	subscription.setMaximumStoredFiles(inputs.getMaximumStoredFiles());
 
 	subscriptions.save(subscription);
     }
