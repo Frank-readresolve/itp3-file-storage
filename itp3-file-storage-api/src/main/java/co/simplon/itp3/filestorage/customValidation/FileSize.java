@@ -21,6 +21,6 @@ public @interface FileSize {
 
     Class<? extends Payload>[] payload() default {};
 
-    long maxSizeInKB() default 100;
+    long maxSizeInKB() default 2000;
 
 }

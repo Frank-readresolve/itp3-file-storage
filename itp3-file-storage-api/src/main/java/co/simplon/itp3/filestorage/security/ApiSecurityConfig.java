@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.context.SecurityContextHolderFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -31,18 +32,21 @@ public class ApiSecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(
 	    HttpSecurity http) throws Exception {
-	http.csrf().disable()
+	http.csrf().disable().sessionManagement()
+		.sessionCreationPolicy(
+			SessionCreationPolicy.STATELESS)
+		.and()
 		.addFilterBefore(preAuthExceptionFilter(),
 			SecurityContextHolderFilter.class)
 		.addFilterAfter(preAuthFilter(),
 			PreAuthFilter.class)
 		.authorizeRequests()
 		.antMatchers(HttpMethod.POST,
-			"/anonymous-files")
-		.anonymous()
+			"/authenticated/upload")
+		.fullyAuthenticated()
 		.antMatchers(HttpMethod.POST,
-			"/authenticated-files")
-		.fullyAuthenticated(); // Fully protected endpoint without anonymous included
+			"/anonymous-files")
+		.anonymous(); // Fully protected endpoint without anonymous included
 	return http.build();
     }
 
@@ -55,7 +59,7 @@ public class ApiSecurityConfig {
 		false);
 	filter.setRequiresAuthenticationRequestMatcher(
 		new AntPathRequestMatcher(
-			"/authenticated-files", "POST"));
+			"/authenticated/upload", "POST"));
 	return filter;
     }
 

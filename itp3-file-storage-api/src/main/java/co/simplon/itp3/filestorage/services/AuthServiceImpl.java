@@ -23,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void autenticate(String customerNumber,
+    public void authenticate(String customerNumber,
 	    String rawKey) throws BadCredentialsException {
 	if ((customerNumber == null)
 		|| customerNumber.equals("")) {

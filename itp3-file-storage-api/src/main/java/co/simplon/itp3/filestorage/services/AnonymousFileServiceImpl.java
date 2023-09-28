@@ -38,7 +38,8 @@ public class AnonymousFileServiceImpl
 	String fileName = baseName + fileSuffix;
 	store(file, fileName);
 	view.setName(fileName);
-	return CompletableFuture.completedFuture(view);// wait for the response to return it
+	return CompletableFuture.completedFuture(view);
+	// wait for the response to return it
     };
 
     private void store(MultipartFile file,

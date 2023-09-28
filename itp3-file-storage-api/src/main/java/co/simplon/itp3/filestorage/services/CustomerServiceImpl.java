@@ -82,7 +82,6 @@ public class CustomerServiceImpl
 
 	restTemplate.postForObject("/send-attached-mail",
 		emailDto, String.class);
-
     }
 
     @Override

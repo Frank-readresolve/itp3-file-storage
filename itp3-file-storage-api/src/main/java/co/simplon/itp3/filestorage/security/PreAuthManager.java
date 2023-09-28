@@ -25,7 +25,7 @@ public class PreAuthManager
 		.getPrincipal();
 	String credentials = (String) authentication
 		.getCredentials();
-	service.autenticate(principal, credentials);
+	service.authenticate(principal, credentials);
 	authentication.setAuthenticated(true);
 	return authentication;
     }
