@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.itp3.filestorage.dtos.AnonymousFileData;
 import co.simplon.itp3.filestorage.dtos.FileView;
+import co.simplon.itp3.filestorage.dtos.FilesStatDto;
 import co.simplon.itp3.filestorage.entities.HttpHeader;
 import co.simplon.itp3.filestorage.repositories.HttpHeaderRepository;
 import co.simplon.itp3.filestorage.services.AnonymousFileService;
@@ -41,6 +43,13 @@ public class AnonymousFileController {
 	    @ModelAttribute @Valid AnonymousFileData inputs) {
 
 	return service.upload(headers, inputs);
+    }
+
+    @GetMapping
+    public FilesStatDto filesStat() {
+	FilesStatDto stats = service.filesStat();
+	return stats;
+
     }
 
 }

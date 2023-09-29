@@ -17,9 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import co.simplon.itp3.filestorage.dtos.AnonymousFileData;
 import co.simplon.itp3.filestorage.dtos.FileView;
+import co.simplon.itp3.filestorage.dtos.FilesStatDto;
 import co.simplon.itp3.filestorage.entities.AnonymousFile;
 import co.simplon.itp3.filestorage.entities.HttpHeader;
 import co.simplon.itp3.filestorage.repositories.AnonymousFileRepository;
+import co.simplon.itp3.filestorage.repositories.FilesStatRepository;
 import co.simplon.itp3.filestorage.repositories.HttpHeaderRepository;
 
 @Service
@@ -30,12 +32,15 @@ public class AnonymousFileServiceImpl
     private String uploadDir;
     private AnonymousFileRepository anonymousFiles;
     private HttpHeaderRepository httpHeaders;
+    private FilesStatRepository FilesStat;
 
     public AnonymousFileServiceImpl(
 	    AnonymousFileRepository anonymousFiles,
-	    HttpHeaderRepository httpHeaders) {
+	    HttpHeaderRepository httpHeaders,
+	    FilesStatRepository FilesStat) {
 	this.anonymousFiles = anonymousFiles;
 	this.httpHeaders = httpHeaders;
+	this.FilesStat = FilesStat;
     }
 
     @Override
@@ -97,6 +102,23 @@ public class AnonymousFileServiceImpl
 	    Files.copy(in, target,
 		    StandardCopyOption.REPLACE_EXISTING);
 	}
+    }
+
+    public FilesStatDto filesStat() {
+	FilesStatDto stats = new FilesStatDto();
+
+	long fileNumber = FilesStat.countFileUpload();
+	long success = FilesStat.countSuccessFileUpload();
+	long error = FilesStat.countFaileFileUpload();
+	// String frequentlyType = FilesStat.frequentlyType();
+	long maxSize = FilesStat.maxFileSize();
+
+	stats.setFileNumber(fileNumber);
+	stats.setSuccess(success);
+	// stats.setFrequentlyType(frequentlyType);
+	stats.setMaxSize(maxSize);
+
+	return stats;
     }
 
 }
