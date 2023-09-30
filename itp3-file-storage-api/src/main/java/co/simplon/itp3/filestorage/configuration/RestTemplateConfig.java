@@ -9,13 +9,13 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestTemplateConfig {
 
-    @Value("${itp3-file-storage-api.send-mail-root}")
+    @Value("${send-mail-api.root}")
     private String mailRootUri;
 
-    @Value("${itp3-file-storage-api.customer-number.header.value}")
+    @Value("${send-mail-api.customer-number.header.value}")
     private String clientNumber;
 
-    @Value("${itp3-file-storage-api.credentials.header.value}")
+    @Value("${send-mail-api.credentials.header.value}")
     private String credentials;
 
     public RestTemplateConfig() {

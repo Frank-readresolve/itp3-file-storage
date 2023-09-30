@@ -17,10 +17,16 @@ public final class SecurityHelper {
      *
      * @return the name of the authenticated client
      */
-    public static String authenticatedClient() {
+//    public static String authenticatedCustomer() {
+//	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//	String numberCustomer = auth.getName();
+//	return numberCustomer;
+//    }
+    public static String authenticatedCustomer() {
 	Authentication auth = SecurityContextHolder
 		.getContext().getAuthentication();
-	return auth.getName();
+	String customerNumber = auth.getName();
+	return customerNumber;
     }
 
 }
